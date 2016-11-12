@@ -14,11 +14,11 @@ class Header extends React.Component {
       <header>
         <div className="container">
           <h1>V2EX</h1>
-          <a href="#">
+          <a href="">
             <img src={'/assets/images/logo@2x.png'} alt="V2EX" title="V2EX" />
           </a>
-          <label>
-            <input 
+          <label htmlFor="keywords">
+            <input
               type="text"
               id="keywords"
               onKeyDown={e => this.handleKeyDown(e)}

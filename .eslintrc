@@ -2,13 +2,20 @@
   "parser": "babel-eslint",
   "extends": "airbnb",
   "globals": {
-    "__DEV__": true
+    "__DEV__": true,
+    "window": true,
+    "document": true
   },
   "rules": {
     "no-confusing-arrow": 0,
     "react/jsx-quotes": 0,
     "jsx-quotes": [2, "prefer-double"],
     "no-console": 0,
-    "new-cap": "off"
+    "new-cap": "off",
+    // 不喜欢写逗号
+    "semi": ["error", "never"],
+    // 每个类函数里面都要有`this`
+    "class-methods-use-this": ["off"],
+    "linebreak-style": "off"
   }
 }

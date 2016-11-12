@@ -1,0 +1,13 @@
+main {
+  background-color: #e2e2e2;
+  background-image: url(/assets/images/shadow_light.png);
+  background-repeat: repeat-x;
+
+  & > section {
+    min-width: 600px;
+    max-width: 1100px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding-top: 20px;
+  }
+}

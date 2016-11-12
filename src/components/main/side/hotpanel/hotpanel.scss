@@ -1,0 +1,57 @@
+.hot-panel {
+  background-color: #fff;
+  border-radius: 3px;
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #e2e2e2;
+
+  dt {
+    padding: 10px;
+    font-size: 12px;
+    line-height: 1.2;
+    text-align: left;
+    border-bottom: 1px solid #e2e2e2;
+    color: #ccc;
+  }
+
+  dd li {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #e2e2e2;
+    overflow: hidden;
+    color: #778087;
+    padding-left: 44px;
+    position: relative;
+
+    a.user-avatar-wrap {
+      text-decoration: none;
+      overflow: hidden;
+      width: 24px;
+      height: 24px;
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      margin-top: -12px;
+
+      img {
+        max-width: 24px;
+        max-height: 24px;
+        border-radius: 4px;
+      }
+    }
+
+    a.title-wrap {
+      line-height: 1.2;
+      text-shadow: 0 1px 0 #fff;
+      text-decoration: none;
+      width: 215px;
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      p {
+        font-size: 13px;
+      }
+    }
+  }
+}

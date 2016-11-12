@@ -8,6 +8,8 @@
 
 1. [V2EX的官方API接口](https://www.v2ex.com/p/7v9TEc53)
 2. [fanzeyi整理的API接口](https://gist.github.com/fanzeyi/6951803)
+3. [djyde整理的API接口](https://github.com/djyde/V2EX-API)
+4. [我自己整理所使用的API接口]()
 
 ## 学习资料
 
@@ -65,8 +67,7 @@ npm i -g webpack
 
 1. `src` 源文件夹
 2. `bin` 打包之后文件夹
-3. `node_modules` 项目依赖文件夹
-4. `webpack.config.js` Webpack的项目配置文件
+3. `webpack.config.js` Webpack的项目配置文件
 
 接下来就是进入Webpack的配置，先理清楚需要打包什么文件：
 
@@ -107,7 +108,7 @@ npm i -g webpack
 
 不知道是不是掌握的不够，上了构建工具之后报错定位变得异常困难，习惯了刀耕火种的我还是决定使用编码规范来约束代码质量，从代码编写的过程中就减少犯错
 
-`Airbnb React` 编码规范
+使广泛为大众接受的 `Airbnb React` 编码规范
 
 #### 优势
 
@@ -116,7 +117,7 @@ npm i -g webpack
 
 #### 集成
 
-目前使用的主要编辑器是`VS Code`
+目前使用的主要编辑器是 `VSCode`
 
 ### 笔记
 

@@ -1,8 +1,10 @@
 var webpack = require('webpack')
-var CopyWebpackPlugin = require('copy-webpack-plugin');
+// var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
+  // 打包的入口配置
   entry: './src/app.jsx',
+  // 打包的产物配置
   output: {
     path: __dirname + '/bin',
     publicPath: '/assets/',
@@ -21,20 +23,22 @@ module.exports = {
     }, {
       test: /\.scss$/,
       loaders: ['style', 'css', 'sass?sourceMap']
-    }, {
-      test: /\.(jpe?g|png|gif)$/,
-      loader: 'file'
-    }]
+    }
+    // , {
+    //   test: /\.(jpe?g|png|gif)$/,
+    //   loader: 'file'
+    // }
+    ]
   },
   resolve: {
     extensions: ['*', '.js', '.jsx', '.sass']
   },
   plugins: [
-    new CopyWebpackPlugin([
-      {
-        from: 'src/images',
-        to: 'images'
-      }
-    ])
+    // new CopyWebpackPlugin([
+    //   {
+    //     from: 'src/images',
+    //     to: 'images'
+    //   }
+    // ])
   ]
 }
