@@ -17,10 +17,14 @@
 
 1. [React.js官方文档](https://facebook.github.io/react/)
 
-### Webpack相关
+### Webpack 相关
 
 1. [Webpack官方文档](http://webpack.github.io/docs/)
 2. [ES6编写Webpack配置](https://cnodejs.org/topic/56346ee43ef9ce60493b0c96)
+
+### 用 ES6+ 来编写 React.js
+
+1. [React on ES6+](https://babeljs.io/blog/2015/06/07/react-on-es6-plus)
 
 # 基于React.js的简单首页
 
@@ -110,10 +114,9 @@ npm i -g webpack
 ```
 参考资料：[babel官方更新记录](https://babeljs.io/blog/2016/10/24/6.18.0)
 
-
 #### .sass
 
-样式准备使用Sass
+样式准备使用 `Sass`
 
 其中使用的 loader 是 `sass-loader` 
 
@@ -134,11 +137,92 @@ npm i -g webpack
 
 根目录下新建Webpack读取的配置文件 `webpack.config.js`
 
+```
+var webpack = require('webpack')
+
+module.exports = {
+  // 打包的入口配置
+  entry: './src/app.jsx',
+  // 打包的产物配置
+  output: {
+    // 源文件路径
+    path: __dirname + '/bin',
+    // 打包产物 server 路径
+    publicPath: '/assets/',
+    // 打包产物 静态路径
+    filename: 'app.bundle.js'
+  },
+  // 开启 map 映射
+  devtool: 'source-map',
+  module: {
+    loaders: [{
+      test: /\.js[x]?$/,
+      exclude: /node_modules/,
+      include: /src/,
+      loader: 'babel'
+    }, {
+      test: /\.scss$/,
+      loaders: ['style', 'css', 'sass?sourceMap']
+    }, {
+      test: /\.(jpe?g|png|gif)$/,
+      loader: 'file'
+    }
+    ]
+  },
+  // 打包的文件类型
+  resolve: {
+    extensions: ['*', '.js', '.jsx', '.sass']
+  }
+}
+```
+
+#### 使用 webpack-dev-server
+
+参考资料：[webpack-dev-server](http://webpack.github.io/docs/webpack-dev-server.html)
+
+在 `package.json` 中 `scripts` 添加：
+
+```
+"dev": "webpack-dev-server --watch --hot --no-info"
+```
+
+以后就可以使用 `npm run dev` 来启动项目
+
+#### 增加静态资源映射
+
+在上面的配置中，处理的都是引入的 `.js[x]` 或者 `sass` 文件的打包
+
+因为是单页面的存在，所以整个项目只有一个 `.html` 文件，这个文件没有在打包的内容中
+
+所以在这个文件中的 `img[src=xxx]` 标签中的引用地址不会经过打包映射到 `/assets` 这个路径下
+
+在这里借助插件实现将所有的静态图片文件都映射到 `/assets` 路径下
+
+使用 [copy-webpack-plugin](https://github.com/kevlened/copy-webpack-plugin)
+
+贴代码：
+
+```
+plugins: [
+  new copyWebpackPlugin([
+    {
+      from: 'src/images',
+      to: 'images'
+    }
+  ])
+]
+```
+
 ### 编码规范
 
 不知道是不是掌握的不够，上了构建工具之后报错定位变得异常困难，习惯了刀耕火种的我还是决定使用编码规范来约束代码质量，从代码编写的过程中就减少犯错
 
-使广泛为大众接受的 `Airbnb React` 编码规范
+使广泛为大众接受的 `Airbnb React` 编码规范加上 `ESLint` 代码检查工具
+
+#### 参考资料
+
+1. [ESLint](http://eslint.org/)
+2. [Airbnb React](https://github.com/JasonBoy/javascript/tree/master/react)
 
 #### 优势
 
@@ -147,7 +231,36 @@ npm i -g webpack
 
 #### 集成
 
-目前使用的主要编辑器是 `VSCode`
+##### 1. 目前使用的主要编辑器是 `VSCode`
+
+1. 需要安装 `eslint` —— 当前目录使用 `npm install eslint` 或者全局 `npm install -g eslint`
+2. 在 `VSCode` 中安装 `ESLint` 插件
+3. 编写 `.eslintrc` 配置文件
+
+##### 2. 配置 .eslintrc
+
+所需要安装的依赖：
+
+1. `eslint`
+2. `eslint-config-airbnb`
+3. `eslint-plugin-jsx-a11y`
+4. `eslint-plugin-react`
+
+其中注意的是，需要按顺序安装，不会自动安装依赖，后面两个包需要手动指定最低版本
+
+然后就可以配置 `.eslintrc` 文件了：
+
+```
+{
+  "extends": "airbnb",
+  // 额外的属性，不喜欢写分号哈
+  "rules": {
+    "semi": 0
+  }
+}
+```
+
+这时候重启 `VSCode` 就可以发现语法不规范的地方有了标注~
 
 ### 笔记
 

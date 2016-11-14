@@ -12,7 +12,7 @@ class List extends React.Component {
       <div className="list-container">
         <Nav />
         <ListView />
-        { /*<NodeContainer />*/}
+        { /* <NodeContainer /> */ }
       </div>
     )
   }
