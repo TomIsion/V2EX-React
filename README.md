@@ -47,6 +47,7 @@
 - webpack
 - babel-core
 - babel-preset-es2015
+- babel-preset-babel
 - babel-loader
 - react
 - react-dom
@@ -82,6 +83,33 @@ npm i -g webpack
 - babel-core
 - babel-preset-es2015
 - babel-preset-react
+- babel-loader
+
+**注意**
+
+随着`babel`的升级（6.18.0），原本的`.babelrc`的编写方式更新成了如下的格式：
+
+```
+// incorrect, and current gives a unexpected error message
+{
+  "presets": [
+    "preset",
+    { "presetOptions": 'hi' } // gets parsed as another preset instead of being part of the "preset"
+  ]
+}
+// correct
+{
+  "presets": [
+    ["preset",
+      {
+        "presetOptions": 'hi'
+      }
+    ]
+  ]
+}
+```
+参考资料：[babel官方更新记录](https://babeljs.io/blog/2016/10/24/6.18.0)
+
 
 #### .sass
 
@@ -94,6 +122,8 @@ npm i -g webpack
 - node-sass
 - style-loader
 - css-loader
+
+通过这些依赖，可以将`.jsx`中的引入的样式文件也成功打包
 
 踩的坑：
 

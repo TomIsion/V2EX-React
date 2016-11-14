@@ -84,7 +84,7 @@ class ListItem extends React.Component {
     return (
       <li className="list-item">
         <a className="img-wrap">
-          <img src={this.props.member.avatar_normal} alt={this.props.member.username} border="0" />
+          <img src={this.props.member.avatar_normal} alt={this.props.member.username} />
         </a>
         <dl>
           <dt>

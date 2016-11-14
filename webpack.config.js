@@ -1,5 +1,4 @@
 var webpack = require('webpack')
-// var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   // 打包的入口配置
@@ -23,22 +22,13 @@ module.exports = {
     }, {
       test: /\.scss$/,
       loaders: ['style', 'css', 'sass?sourceMap']
+    }, {
+      test: /\.(jpe?g|png|gif)$/,
+      loader: 'file'
     }
-    // , {
-    //   test: /\.(jpe?g|png|gif)$/,
-    //   loader: 'file'
-    // }
     ]
   },
   resolve: {
     extensions: ['*', '.js', '.jsx', '.sass']
-  },
-  plugins: [
-    // new CopyWebpackPlugin([
-    //   {
-    //     from: 'src/images',
-    //     to: 'images'
-    //   }
-    // ])
-  ]
+  }
 }
