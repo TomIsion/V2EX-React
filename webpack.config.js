@@ -1,4 +1,3 @@
-var webpack = require('webpack')
 var copyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {

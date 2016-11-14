@@ -262,13 +262,15 @@ plugins: [
 
 这时候重启 `VSCode` 就可以发现语法不规范的地方有了标注~
 
+### Debug
+
 ### 笔记
 
 #### 首页
 
-1. 搜索框输入回车搜索 
+##### 1. 搜索框输入回车搜索 
 
-##### keyBoard Events Note
+keyBoard Events 相关
 
 
 
